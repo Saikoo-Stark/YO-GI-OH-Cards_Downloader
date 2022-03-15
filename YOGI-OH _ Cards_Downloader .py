@@ -61,6 +61,15 @@ def send_request(type):
 def downloader(information):  #download every card in device 
 	
 	name , link , type_card = information
+	
+	new_name = []
+	for i in range(len(name)):
+		if name[i] == "/" or name[i] == "\\":
+			new_name.append(" ")
+		else:
+			new_name.append(name[i])
+	name = "".join(new_name)
+	
 	print(name)
 	
 	resp = requests.get(link).content  # send request to get binary code of card image
